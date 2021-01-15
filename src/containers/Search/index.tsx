@@ -11,7 +11,7 @@ import style from 'components/Search/style.module.css'
 const SearchContainer: FC = () => {
   const [results, setResults] = useState<TUserResponse>({ status: TResponseStatus.done, list: [], error_message: '' })
   const [value, setValue] = useState<string>('')
-  const deboucedValue = useDebounce(value, 200)
+  const deboucedValue = useDebounce(value, 500)
 
   const inputChanged = useCallback((value) => {
     setValue(value)
@@ -20,8 +20,7 @@ const SearchContainer: FC = () => {
   useEffect(() => {
     if (deboucedValue !== '' && deboucedValue.length >= 3) {
       setResults({...results, status: TResponseStatus.searching})
-      api
-        .searchUserByName(deboucedValue)
+      api.searchUserByName(deboucedValue)
         .then((data: { items: TUser[] }) => {
           setResults({
             list: data.items,

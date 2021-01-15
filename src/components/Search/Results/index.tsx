@@ -27,8 +27,9 @@ const ResultsComponent: FC<TResults> = ({ status, list, isTypying }) => {
         />
       ))
     }
-
-    return <span className={style.ResultInfo}>Pls, inform at least 3 letters</span>
+    if (status === TResponseStatus.done) {
+      return <span className={style.ResultInfo}>Pls, inform at least 3 letters</span>
+    }
   }, [status, list, isTypying])
 
   return (
