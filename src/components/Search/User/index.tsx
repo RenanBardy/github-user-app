@@ -14,7 +14,7 @@ const User: FC<TUser> = ({ name, avatar, url }) => {
         <img src={avatar} />
       </div>
       <div className={style.profile}>
-        <h4>{name}</h4>
+        <h4 data-cy={'user-name'}>{name}</h4>
       </div>
     </a>
   )

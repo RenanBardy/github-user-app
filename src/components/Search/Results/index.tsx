@@ -10,11 +10,15 @@ export type TResults = {
 const ResultsComponent: FC<TResults> = ({ status, list, isTypying }) => {
   const $component = useMemo(() => {
     if (status === TResponseStatus.searching) {
-      return <span className={style.ResultInfo}>Searching user...</span>
+      return <span className={style.ResultInfo} data-cy={'result-search-message'}>
+        Searching user...
+      </span>
     }
 
     if (status === TResponseStatus.notFound) {
-      return <span className={style.ResultInfo}>Sorry, no user found</span>
+      return <span className={style.ResultInfo} data-cy={'result-not_found-message'}>
+        Sorry, no user found
+      </span>
     }
 
     if (list.length) {
@@ -28,7 +32,9 @@ const ResultsComponent: FC<TResults> = ({ status, list, isTypying }) => {
       ))
     }
     if (status === TResponseStatus.done) {
-      return <span className={style.ResultInfo}>Pls, inform at least 3 letters</span>
+      return <span className={style.ResultInfo} data-cy={'result-small_word-message'}>
+        Pls, inform at least 3 letters
+      </span>
     }
   }, [status, list, isTypying])
 

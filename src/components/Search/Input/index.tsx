@@ -18,9 +18,10 @@ const SearchInput: FC<TSearchInput> = ({ inputChanged, status, total }) => {
   return (
     <div className={style.SearchInput}>
       <label htmlFor={'search-input'}></label>
-      <span>{total ? `${total} found` : ''}</span>
+      <span data-cy={'users-found'}>{total ? `${total} found` : ''}</span>
       <input
         id={'search-input'}
+        data-cy={'search-input'}
         autoComplete={'off'}
         placeholder={'Search Github users'}
         onChange={onChange}

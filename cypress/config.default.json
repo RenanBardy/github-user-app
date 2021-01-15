@@ -1,6 +1,7 @@
 {
   "projectId": "github-user-app",
   "integrationFolder": "./cypress/tests/",
+  "baseUrl": "http://localhost:3000",
   "env": {
   }
 }
