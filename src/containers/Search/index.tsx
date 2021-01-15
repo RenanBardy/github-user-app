@@ -9,11 +9,11 @@ import SearchError from 'components/Search/Error'
 import style from 'components/Search/style.module.css'
 
 const SearchContainer: FC = () => {
+  const [value, setValue] = useState<string>('')
+  const deboucedValue = useDebounce(value, 500)
   const [results, setResults] = useState<TUserResponse>({
     status: TResponseStatus.done, list: [], error_message: '', total: null
   })
-  const [value, setValue] = useState<string>('')
-  const deboucedValue = useDebounce(value, 500)
 
   const inputChanged = useCallback((value) => {
     setValue(value)
@@ -27,8 +27,8 @@ const SearchContainer: FC = () => {
           setResults({
             total: data.total_count,
             list: data.items,
+            status: data.items.length ? TResponseStatus.done : TResponseStatus.notFound,
             error_message: '',
-            status: data.items.length ? TResponseStatus.done : TResponseStatus.notFound
           })
         })
         .catch((err) => {

@@ -5,14 +5,9 @@ type TError = {
   error?: string
 }
 
-const Error: FC<TError> = ({ error }) => {
-  if (!error) {
-    return null
-  }
-
-  return (
+const Error: FC<TError> = ({ error }) => 
+  error ? (
     <div className={style.Error}>{error}</div>
-  )
-}
+  ) : null
 
 export default memo(Error)

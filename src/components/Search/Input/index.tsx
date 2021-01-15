@@ -17,6 +17,8 @@ const SearchInput: FC<TSearchInput> = ({ inputChanged, status, total }) => {
 
   return (
     <div className={style.SearchInput}>
+      <label htmlFor={'search-input'}></label>
+      <span>{total ? `${total} found` : ''}</span>
       <input
         id={'search-input'}
         autoComplete={'off'}
@@ -26,8 +28,6 @@ const SearchInput: FC<TSearchInput> = ({ inputChanged, status, total }) => {
           isFocused && status !== TResponseStatus.error ? style.SearchInputFocused : ''
         }
       />
-      <label htmlFor="search-input"></label>
-      <span>{total && `${total} found`}</span>
     </div>
   )
 }
