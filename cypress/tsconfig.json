@@ -5,6 +5,7 @@
     "types": ["cypress"]
   },
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    "plugins/index.js"
   ]
 }
