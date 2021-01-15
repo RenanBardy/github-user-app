@@ -1,0 +1,31 @@
+.SearchInput {
+  position: relative;
+  width: 100%;
+}
+
+.SearchInput input {
+  padding: 15px 40px;
+  border-radius: 25px;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  background: var(--white);
+  padding-inline-start: 50px;
+}
+
+.SearchInput .SearchInputFocused {
+  border-radius: 15px 15px 0 0;
+}
+
+.SearchInput label {
+  content: ' ';
+  background-image: url('/images/github-icon.png');
+  background-size: cover;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  z-index: 2;
+}

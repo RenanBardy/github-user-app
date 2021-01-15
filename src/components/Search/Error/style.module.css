@@ -1,0 +1,6 @@
+.Error {
+  margin-top: 20px;
+  color: var(--light-gray);
+  font-size: 12px;
+  text-align: center;
+}
