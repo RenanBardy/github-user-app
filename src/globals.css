@@ -23,7 +23,8 @@ a {
 }
 
 main {
-  width: 100%;
+  width: 90%;
+  margin: 0 5%;
   height: 100vh;
   display: flex;
   justify-content: center;

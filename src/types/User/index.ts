@@ -11,6 +11,7 @@ export enum TResponseStatus {
 }
 
 export type TUserResponse = {
+  total: number | null
   status: TResponseStatus
   list: TUser[]
   error_message?: string

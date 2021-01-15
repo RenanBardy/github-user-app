@@ -3,7 +3,7 @@ import style from './style.module.css'
 
 const Title: FC = () => {
   return (
-    <h1 className={style.title}>Welcome</h1>
+    <h1 className={style.title}>welcome</h1>
   )
 }
 

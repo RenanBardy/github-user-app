@@ -19,7 +19,6 @@
 }
 
 .SearchInput label {
-  content: ' ';
   background-image: url('/images/github-icon.png');
   background-size: cover;
   width: 22px;
@@ -28,4 +27,12 @@
   top: 12px;
   left: 15px;
   z-index: 2;
+}
+
+.SearchInput span {
+  position: absolute;
+  top: 17px;
+  right: 15px;
+  z-index: 2;
+  font-size: 10px;
 }

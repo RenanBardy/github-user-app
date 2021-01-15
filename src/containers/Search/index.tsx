@@ -9,7 +9,9 @@ import SearchError from 'components/Search/Error'
 import style from 'components/Search/style.module.css'
 
 const SearchContainer: FC = () => {
-  const [results, setResults] = useState<TUserResponse>({ status: TResponseStatus.done, list: [], error_message: '' })
+  const [results, setResults] = useState<TUserResponse>({
+    status: TResponseStatus.done, list: [], error_message: '', total: null
+  })
   const [value, setValue] = useState<string>('')
   const deboucedValue = useDebounce(value, 500)
 
@@ -19,10 +21,11 @@ const SearchContainer: FC = () => {
 
   useEffect(() => {
     if (deboucedValue !== '' && deboucedValue.length >= 3) {
-      setResults({...results, status: TResponseStatus.searching})
+      setResults({...results, total: null, status: TResponseStatus.searching})
       api.searchUserByName(deboucedValue)
-        .then((data: { items: TUser[] }) => {
+        .then((data: { items: TUser[], total_count: number }) => {
           setResults({
+            total: data.total_count,
             list: data.items,
             error_message: '',
             status: data.items.length ? TResponseStatus.done : TResponseStatus.notFound
@@ -30,6 +33,7 @@ const SearchContainer: FC = () => {
         })
         .catch((err) => {
           setResults({
+            total: null,
             list: [],
             status: TResponseStatus.error,
             error_message: err.response && err.response.status
@@ -43,8 +47,16 @@ const SearchContainer: FC = () => {
   return (
     <div className={style.SearchContainer}>
       <SearchTitle />
-      <SearchInput inputChanged={inputChanged} status={results.status} />
-      <SearchResults list={results.list} status={results.status} isTypying={!!value} />
+      <SearchInput
+        inputChanged={inputChanged}
+        status={results.status}
+        total={!value ? null : results.total}
+      />
+      <SearchResults
+        list={results.list}
+        status={results.status}
+        isTypying={!!value}
+      />
       <SearchError error={results.error_message} />
     </div>
   )

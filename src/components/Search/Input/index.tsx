@@ -1,13 +1,12 @@
 import { FC, memo, useState, useCallback } from 'react'
-import { TResponseStatus } from 'types/User'
+import { TUserResponse, TResponseStatus } from 'types/User'
 import style from './style.module.css'
 
 type TSearchInput = {
   inputChanged: (t: string) => void
-  status: TResponseStatus
-}
+} & Pick<TUserResponse, 'total' | 'status'>
 
-const SearchInput: FC<TSearchInput> = ({ inputChanged, status }) => {
+const SearchInput: FC<TSearchInput> = ({ inputChanged, status, total }) => {
   const [isFocused, setFocus] = useState<boolean>(false)
 
   const onChange = useCallback((e) => {
@@ -28,6 +27,7 @@ const SearchInput: FC<TSearchInput> = ({ inputChanged, status }) => {
         }
       />
       <label htmlFor="search-input"></label>
+      <span>{total && `${total} found`}</span>
     </div>
   )
 }

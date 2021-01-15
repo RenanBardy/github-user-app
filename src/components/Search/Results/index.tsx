@@ -5,7 +5,7 @@ import style from './style.module.css'
 
 export type TResults = {
   isTypying: boolean
-} & TUserResponse
+} & Pick<TUserResponse, 'list' | 'status'>
 
 const ResultsComponent: FC<TResults> = ({ status, list, isTypying }) => {
   const $component = useMemo(() => {

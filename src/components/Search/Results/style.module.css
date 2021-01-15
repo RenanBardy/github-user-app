@@ -2,6 +2,8 @@
   width: 100%;
   background: var(--white);
   border-radius: 0 0 15px 15px;
+  max-height: 30vh;
+  overflow-y: scroll;
 }
 
 .ResultInfo {
